@@ -1,6 +1,7 @@
 # Change the following directories based on project if copy pasting this .gitignore
 client/node_modules/
 api/node_modules/
+api/.env
 
 # VSCode
 .vscode/*

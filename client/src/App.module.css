@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  border: 1px red solid;
+}
+
+.drawer {
+  width: var(--non-expanded-drawer);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow: hidden;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.extendoDrawer {
+  width: var(--expanded-drawer);
+}

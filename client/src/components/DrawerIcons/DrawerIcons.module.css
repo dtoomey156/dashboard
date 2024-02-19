@@ -1,0 +1,4 @@
+.iconContainer {
+  min-height: 100vh;
+  width: var(--non-expanded-drawera);
+}

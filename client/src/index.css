@@ -2,6 +2,8 @@
   font-family: "JetBrains Mono", monospace, Arial, Helvetica, sans-serif;
   font-size: 62.5%;
   --main-color: #0d6efd;
+  --non-expanded-drawer: 6rem;
+  --expanded-drawer: 22rem;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -22,6 +24,7 @@
 body {
   font-size: 1.6rem;
   min-height: 100vh;
+  background-color: aliceblue;
 }
 
 #root {
