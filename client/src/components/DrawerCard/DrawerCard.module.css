@@ -1,0 +1,18 @@
+div svg {
+  width: 4rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+  color: var(--main-color);
+}
+
+.card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.drawerTitle {
+  margin-left: 2.5rem;
+}

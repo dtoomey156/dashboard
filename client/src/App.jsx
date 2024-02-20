@@ -9,11 +9,9 @@ function App() {
 
   function applyTransitions() {
     setExpandedDrawer(true);
-    console.log(expandedDrawer);
   }
   function removeTransitions() {
     setExpandedDrawer(false);
-    console.log(expandedDrawer);
   }
   return (
     <UserContextProvider>
@@ -21,6 +19,7 @@ function App() {
         <div
           className={[
             styles.drawer,
+            expandedDrawer ? styles.drawerRightBorder : "",
             expandedDrawer ? styles.extendoDrawer : "",
           ].join(" ")}
           onClick={applyTransitions}

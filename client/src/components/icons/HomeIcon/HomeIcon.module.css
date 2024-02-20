@@ -1,0 +1,9 @@
+.card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.drawerTitle {
+  margin-left: 2.5rem;
+}

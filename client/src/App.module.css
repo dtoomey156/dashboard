@@ -17,3 +17,9 @@
 .extendoDrawer {
   width: var(--expanded-drawer);
 }
+
+.drawerRightBorder {
+  border-right-color: var(--main-color);
+  border-right-width: 0.2rem;
+  border-right-style: dashed;
+}

@@ -1,11 +1,12 @@
-.drawerDividerCard {
+/* .drawerDividerCard {
   display: flex;
-  /* height: 5rem; */
-}
+} */
 
 .dividerBar {
+  display: flex;
   height: 1rem;
-  width: var(--expanded-drawer);
+
+  /* width: var(--expanded-drawer); */
   border: 0.2rem #0d6efd solid;
   border-radius: 1rem;
 }
