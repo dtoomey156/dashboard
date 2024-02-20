@@ -31,24 +31,14 @@ function DrawerCard() {
 
   const staticUi = [
     <DashboardIcon iconName="Dashboard" />,
-    // <DrawerDivider />,
     <HomeIcon iconName="Home" />,
-    // <DrawerDivider />,
     <CogIcon iconName="Settings" />,
     <MessageQuestionIcon iconName="Support" />,
     <ShieldIcon iconName="Privacy" />,
     ,
   ];
 
-  const drawerDivider = [<DrawerDivider />, <DrawerDivider />];
-
-  // const poop = parse(data);
-  // console.log(poop, "buuuuurpppp");
-
-  // const fullSet = [...staticUI];
-  // console.log(fullSet);
-  // fullSet.splice(3, 0, ...userIcons);
-  // console.log(fullSet);
+  const drawerDivider = <DrawerDivider />;
 
   const userSelectedIcons = [];
   data.map((index) => {
@@ -56,11 +46,11 @@ function DrawerCard() {
   });
   console.log(userSelectedIcons);
 
-  userSelectedIcons.forEach((item) => {
-    staticUi.splice(3, 0, item);
+  userSelectedIcons.reverse().forEach((item) => {
+    staticUi.splice(2, 0, item);
   });
-
-  console.log(<DashboardIcon />);
+  staticUi.splice(1, 0, drawerDivider);
+  staticUi.splice(8, 0, drawerDivider);
 
   return staticUi.map((each) =>
     !each.svg ? (
