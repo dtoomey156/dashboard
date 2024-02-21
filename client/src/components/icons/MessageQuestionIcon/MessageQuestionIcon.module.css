@@ -2,8 +2,22 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  pointer-events: none;
 }
 
 .drawerTitle {
   margin-left: 2.5rem;
+  pointer-events: none;
+}
+
+.drawerTitle:active {
+  color: #0d6efdaa;
+}
+
+.cardClickable {
+  pointer-events: auto;
+}
+
+.mousePointer {
+  cursor: pointer;
 }

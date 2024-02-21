@@ -26,7 +26,7 @@ function App() {
           onMouseLeave={removeTransitions}
         >
           {/* <DrawerIcons /> */}
-          <DrawerCard />
+          <DrawerCard expandedDrawer={expandedDrawer} />
         </div>
       </div>
     </UserContextProvider>

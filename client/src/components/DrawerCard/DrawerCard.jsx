@@ -17,7 +17,7 @@ import parse from "html-react-parser";
 //   ));
 // }
 
-function DrawerCard() {
+function DrawerCard({ expandedDrawer }) {
   // const userIcons = [];
   // data.map((index) => {
   //   userIcons.push(parse(index.svg));
@@ -30,11 +30,11 @@ function DrawerCard() {
   // console.log(poop, "buuuuurrrrpppp");
 
   const staticUi = [
-    <DashboardIcon iconName="Dashboard" />,
-    <HomeIcon iconName="Home" />,
-    <CogIcon iconName="Settings" />,
-    <MessageQuestionIcon iconName="Support" />,
-    <ShieldIcon iconName="Privacy" />,
+    <DashboardIcon iconName="Dashboard" expandedDrawer={expandedDrawer} />,
+    <HomeIcon iconName="Home" expandedDrawer={expandedDrawer} />,
+    <CogIcon iconName="Settings" expandedDrawer={expandedDrawer} />,
+    <MessageQuestionIcon iconName="Support" expandedDrawer={expandedDrawer} />,
+    <ShieldIcon iconName="Privacy" expandedDrawer={expandedDrawer} />,
     ,
   ];
 
@@ -57,8 +57,23 @@ function DrawerCard() {
       each
     ) : (
       <div className={styles.card}>
-        <div>{parse(each.svg)}</div>
-        <h1 className={styles.drawerTitle}>{each.name}</h1>
+        <div
+          className={[
+            expandedDrawer ? styles.cardClickable : "",
+            expandedDrawer ? styles.mousePointer : "",
+          ].join(" ")}
+        >
+          {parse(each.svg)}
+        </div>
+        <h1
+          className={[
+            styles.drawerTitle,
+            expandedDrawer ? styles.cardClickable : "",
+            expandedDrawer ? styles.mousePointer : "",
+          ].join(" ")}
+        >
+          {each.name}
+        </h1>
       </div>
     )
   );

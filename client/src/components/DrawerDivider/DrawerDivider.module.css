@@ -1,12 +1,7 @@
-/* .drawerDividerCard {
-  display: flex;
-} */
-
 .dividerBar {
   display: flex;
   height: 1rem;
-
-  /* width: var(--expanded-drawer); */
   border: 0.2rem #0d6efd solid;
   border-radius: 1rem;
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.2));
 }
