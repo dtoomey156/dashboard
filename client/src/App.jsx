@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./App.module.css";
 // import DrawerIcons from "./components/DrawerIcons/DrawerIcons.jsx";
 import DrawerCard from "./components/DrawerCard/DrawerCard.jsx";
+import Background from "./components/Background/Background.jsx";
 
 function App() {
   const [expandedDrawer, setExpandedDrawer] = useState(false);
@@ -16,6 +17,7 @@ function App() {
   return (
     <UserContextProvider>
       <div className={styles.container}>
+        <Background />
         <div
           className={[
             styles.drawer,
@@ -25,7 +27,6 @@ function App() {
           onClick={applyTransitions}
           onMouseLeave={removeTransitions}
         >
-          {/* <DrawerIcons /> */}
           <DrawerCard expandedDrawer={expandedDrawer} />
         </div>
       </div>

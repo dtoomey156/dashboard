@@ -6,6 +6,7 @@ function MessageQuestionIcon({ iconName, expandedDrawer }) {
     <div className={styles.card}>
       <div
         className={[
+          styles.icon,
           expandedDrawer ? styles.cardClickable : "",
           expandedDrawer ? styles.mousePointer : "",
         ].join(" ")}

@@ -1,0 +1,5 @@
+.background {
+  position: absolute;
+  inset: 20% 10%;
+  /* min-height: 100vh; */
+}
