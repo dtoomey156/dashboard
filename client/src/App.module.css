@@ -4,6 +4,7 @@
 }
 
 .drawer {
+  z-index: 999;
   width: var(--non-expanded-drawer);
   display: flex;
   flex-direction: column;
@@ -13,9 +14,11 @@
   padding-right: 1rem;
   border-right-color: aliceblue;
 
-  background-color: aliceblue;
+  background-color: transparent;
 
   transition: width 0.4s ease-in, box-shadow 0.4s ease;
+
+  backdrop-filter: blur(1.5rem);
 }
 
 .extendoDrawer {

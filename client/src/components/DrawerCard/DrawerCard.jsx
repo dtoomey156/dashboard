@@ -57,7 +57,7 @@ function DrawerCard({ expandedDrawer }) {
       each
     ) : (
       <div className={styles.card}>
-        <div
+        <button
           className={[
             styles.icon,
             expandedDrawer ? styles.cardClickable : "",
@@ -65,8 +65,8 @@ function DrawerCard({ expandedDrawer }) {
           ].join(" ")}
         >
           {parse(each.svg)}
-        </div>
-        <h1
+        </button>
+        <button
           className={[
             styles.drawerTitle,
             expandedDrawer ? styles.cardClickable : "",
@@ -74,7 +74,7 @@ function DrawerCard({ expandedDrawer }) {
           ].join(" ")}
         >
           {each.name}
-        </h1>
+        </button>
       </div>
     )
   );

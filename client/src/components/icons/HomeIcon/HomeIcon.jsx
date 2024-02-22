@@ -4,7 +4,7 @@ import styles from "./HomeIcon.module.css";
 function HomeIcon({ iconName, expandedDrawer }) {
   return (
     <div className={styles.card}>
-      <div
+      <button
         className={[
           styles.icon,
           expandedDrawer ? styles.cardClickable : "",
@@ -17,8 +17,8 @@ function HomeIcon({ iconName, expandedDrawer }) {
             d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"
           />
         </svg>
-      </div>
-      <h1
+      </button>
+      <button
         className={[
           styles.drawerTitle,
           expandedDrawer ? styles.cardClickable : "",
@@ -26,7 +26,7 @@ function HomeIcon({ iconName, expandedDrawer }) {
         ].join(" ")}
       >
         {iconName}
-      </h1>
+      </button>
     </div>
   );
 }
