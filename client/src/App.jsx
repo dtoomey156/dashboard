@@ -1,12 +1,14 @@
-import UserContextProvider from "./components/UserProvider/UserProvider.jsx";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./App.module.css";
 // import DrawerIcons from "./components/DrawerIcons/DrawerIcons.jsx";
 import DrawerCard from "./components/DrawerCard/DrawerCard.jsx";
-import Background from "./components/Background/Background.jsx";
+import Logo from "./components/Logo/Logo.jsx";
+import CheckForUser from "./components/CheckForUser/CheckForUser.jsx";
+import Routes from "./components/Routes/Routes.jsx";
 
 function App() {
   const [expandedDrawer, setExpandedDrawer] = useState(false);
+  // const { username } = useContext(UserContext);
 
   function applyTransitions() {
     setExpandedDrawer(true);
@@ -15,10 +17,13 @@ function App() {
     setExpandedDrawer(false);
   }
   return (
-    <UserContextProvider>
-      <div className={styles.container}>
-        <Background />
-        <div
+    <div className={styles.container}>
+      <Logo />
+      <CheckForUser>
+        <Routes />
+      </CheckForUser>
+
+      {/* <div
           className={[
             styles.drawer,
             expandedDrawer ? styles.drawerRightBorder : "",
@@ -28,9 +33,8 @@ function App() {
           onMouseLeave={removeTransitions}
         >
           <DrawerCard expandedDrawer={expandedDrawer} />
-        </div>
-      </div>
-    </UserContextProvider>
+        </div> */}
+    </div>
   );
 }
 

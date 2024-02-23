@@ -30,15 +30,37 @@ function DrawerCard({ expandedDrawer }) {
   // console.log(poop, "buuuuurrrrpppp");
 
   const staticUi = [
-    <DashboardIcon iconName="Dashboard" expandedDrawer={expandedDrawer} />,
-    <HomeIcon iconName="Home" expandedDrawer={expandedDrawer} />,
-    <CogIcon iconName="Settings" expandedDrawer={expandedDrawer} />,
-    <MessageQuestionIcon iconName="Support" expandedDrawer={expandedDrawer} />,
-    <ShieldIcon iconName="Privacy" expandedDrawer={expandedDrawer} />,
+    <DashboardIcon
+      key={Math.random()}
+      iconName="Dashboard"
+      expandedDrawer={expandedDrawer}
+    />,
+    <DrawerDivider key={Math.random()} />,
+    <HomeIcon
+      key={Math.random()}
+      iconName="Home"
+      expandedDrawer={expandedDrawer}
+    />,
+    <DrawerDivider key={Math.random()} />,
+    <CogIcon
+      key={Math.random()}
+      iconName="Settings"
+      expandedDrawer={expandedDrawer}
+    />,
+    <MessageQuestionIcon
+      key={Math.random()}
+      iconName="Support"
+      expandedDrawer={expandedDrawer}
+    />,
+    <ShieldIcon
+      key={Math.random()}
+      iconName="Privacy"
+      expandedDrawer={expandedDrawer}
+    />,
     ,
   ];
 
-  const drawerDivider = <DrawerDivider />;
+  // const drawerDivider = <DrawerDivider />;
 
   const userSelectedIcons = [];
   data.map((index) => {
@@ -47,16 +69,16 @@ function DrawerCard({ expandedDrawer }) {
   console.log(userSelectedIcons);
 
   userSelectedIcons.reverse().forEach((item) => {
-    staticUi.splice(2, 0, item);
+    staticUi.splice(3, 0, item);
   });
-  staticUi.splice(1, 0, drawerDivider);
-  staticUi.splice(8, 0, drawerDivider);
+  // staticUi.splice(1, 0, drawerDivider);
+  // staticUi.splice(8, 0, drawerDivider);
 
   return staticUi.map((each) =>
     !each.svg ? (
       each
     ) : (
-      <div className={styles.card}>
+      <div key={each.name} className={styles.card}>
         <button
           className={[
             styles.icon,
