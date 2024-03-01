@@ -1,4 +1,5 @@
-import React from "react";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../CheckForUser/CheckForUser";
 import { data } from "../../data/data";
 import styles from "./DrawerCard.module.css";
 import DashboardIcon from "../icons/DashboardIcon/DashboardIcon";
@@ -29,56 +30,89 @@ function DrawerCard({ expandedDrawer }) {
   // });
   // console.log(poop, "buuuuurrrrpppp");
 
+  const { username } = useContext(UserContext);
+  const [logoDisplay, setLogoDisplay] = useState(false);
+
   const staticUi = [
     <DashboardIcon
-      key={Math.random()}
+      key={"dashboard"}
       iconName="Dashboard"
       expandedDrawer={expandedDrawer}
     />,
-    <DrawerDivider key={Math.random()} />,
-    <HomeIcon
-      key={Math.random()}
-      iconName="Home"
-      expandedDrawer={expandedDrawer}
-    />,
-    <DrawerDivider key={Math.random()} />,
+    <DrawerDivider key={"divider1"} />,
+    <HomeIcon key={"home"} iconName="Home" expandedDrawer={expandedDrawer} />,
+    <DrawerDivider key={"divider2"} />,
     <CogIcon
-      key={Math.random()}
+      key={"settings"}
       iconName="Settings"
       expandedDrawer={expandedDrawer}
     />,
     <MessageQuestionIcon
-      key={Math.random()}
+      key={"support"}
       iconName="Support"
       expandedDrawer={expandedDrawer}
     />,
     <ShieldIcon
-      key={Math.random()}
+      key={"privacy"}
       iconName="Privacy"
       expandedDrawer={expandedDrawer}
     />,
-    ,
   ];
 
-  // const drawerDivider = <DrawerDivider />;
+  // const array = [
+  //   <DashboardIcon key={1} iconName="Dashboard" />,
+  //   <ShieldIcon key={2} iconName="Privacy" />,
+  // ];
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (username) {
+  //       setLogoDisplay(true);
+  //     }
+  //   }, 1);
+  // }, []);
+
+  useEffect(() => {
+    setLogoDisplay(true);
+  }, []);
 
   const userSelectedIcons = [];
   data.map((index) => {
     userSelectedIcons.push(index);
   });
-  console.log(userSelectedIcons);
+
+  console.log(logoDisplay, "logodisplay from Drawer Card");
 
   userSelectedIcons.reverse().forEach((item) => {
     staticUi.splice(3, 0, item);
   });
-  // staticUi.splice(1, 0, drawerDivider);
-  // staticUi.splice(8, 0, drawerDivider);
+
+  console.log(logoDisplay, "from drawercard");
+
+  // return (
+  //   <>
+  //     <DashboardIcon />
+  //     <DrawerDivider />
+  //     <HomeIcon />
+  //     <DrawerDivider />
+  //     <CogIcon />
+  //     <MessageQuestionIcon />
+  //     <ShieldIcon />
+  //   </>
+  // );
+
+  // return array;
 
   return staticUi.map((each) =>
     !each.svg ? (
       each
     ) : (
-      <div key={each.name} className={styles.card}>
+      <div
+        key={each.name}
+        className={[styles.card, logoDisplay ? styles.fadeOnIcons : ""].join(
+          " "
+        )}
+      >
         <button
           className={[
             styles.icon,

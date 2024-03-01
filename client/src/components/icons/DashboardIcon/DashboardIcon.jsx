@@ -1,9 +1,26 @@
-import React from "react";
-import styles from "./DashboardIcon.module.css";
+import { useContext, useState, useEffect, useRef } from "react";
+import { UserContext } from "../../CheckForUser/CheckForUser";
+import styles from "../IconCSS/IconCSS.module.css";
 
 function DashboardIcon({ iconName, expandedDrawer }) {
+  const { username } = useContext(UserContext);
+  const [logoDisplay, setLogoDisplay] = useState(false);
+  console.log(logoDisplay, "logodisplay from Dashboard Icon");
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLogoDisplay(true);
+  //   }, 1);
+  // }, []);
+
+  useEffect(() => {
+    setLogoDisplay(true);
+  }, []);
+
   return (
-    <div className={styles.card}>
+    <div
+      className={[styles.card, logoDisplay ? styles.fadeOnIcons : ""].join(" ")}
+    >
       <button
         className={[
           styles.icon,

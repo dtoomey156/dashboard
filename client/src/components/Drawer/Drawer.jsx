@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styles from "./Drawer.module.css";
 import DrawerCard from "../DrawerCard/DrawerCard";
 
@@ -12,6 +12,7 @@ function Drawer() {
   function removeTransitions() {
     setExpandedDrawer(false);
   }
+
   return (
     <div
       className={[

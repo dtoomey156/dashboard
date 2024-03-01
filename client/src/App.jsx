@@ -1,41 +1,44 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styles from "./App.module.css";
-// import DrawerIcons from "./components/DrawerIcons/DrawerIcons.jsx";
-import DrawerCard from "./components/DrawerCard/DrawerCard.jsx";
 import Logo from "./components/Logo/Logo.jsx";
 import CheckForUser from "./components/CheckForUser/CheckForUser.jsx";
 import Routes from "./components/Routes/Routes.jsx";
+import { UserContext } from "./components/CheckForUser/CheckForUser.jsx";
 
 function App() {
-  const [expandedDrawer, setExpandedDrawer] = useState(false);
-  // const { username } = useContext(UserContext);
-
-  function applyTransitions() {
-    setExpandedDrawer(true);
-  }
-  function removeTransitions() {
-    setExpandedDrawer(false);
-  }
+  const { username } = useContext(UserContext);
   return (
-    <div className={styles.container}>
-      <Logo />
-      <CheckForUser>
+    <CheckForUser>
+      <div className={styles.container}>
+        <Logo />
         <Routes />
-      </CheckForUser>
-
-      {/* <div
-          className={[
-            styles.drawer,
-            expandedDrawer ? styles.drawerRightBorder : "",
-            expandedDrawer ? styles.extendoDrawer : "",
-          ].join(" ")}
-          onClick={applyTransitions}
-          onMouseLeave={removeTransitions}
-        >
-          <DrawerCard expandedDrawer={expandedDrawer} />
-        </div> */}
-    </div>
+      </div>
+    </CheckForUser>
   );
+
+  // const { username } = useContext(UserContext);
+  // return (
+  //   <CheckForUser>
+  //     <div
+  //       className={[
+  //         styles.container,
+  //         !username ? styles.centerInWindow : "",
+  //       ].join(" ")}
+  //     >
+  //       <Logo />
+  //       <Routes />
+  //     </div>
+  //   </CheckForUser>
+  // );
+
+  // return (
+  //   <div className={styles.container}>
+  //     <Logo />
+  //     <CheckForUser>
+  //       <Routes />
+  //     </CheckForUser>
+  //   </div>
+  // );
 }
 
 export default App;

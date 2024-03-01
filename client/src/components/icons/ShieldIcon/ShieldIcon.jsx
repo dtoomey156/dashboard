@@ -1,9 +1,22 @@
-import React from "react";
-import styles from "./ShieldIcon.module.css";
+import { useContext, useState, useEffect } from "react";
+import { UserContext } from "../../CheckForUser/CheckForUser";
+import styles from "../IconCSS/IconCSS.module.css";
 
 function ShieldIcon({ iconName, expandedDrawer }) {
+  const { username } = useContext(UserContext);
+  const [logoDisplay, setLogoDisplay] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (username) {
+        setLogoDisplay(true);
+      }
+    }, 1);
+  }, [username]);
   return (
-    <div className={styles.card}>
+    <div
+      className={[styles.card, logoDisplay ? styles.fadeOnIcons : ""].join(" ")}
+    >
       <button
         className={[
           styles.icon,
