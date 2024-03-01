@@ -1,18 +1,13 @@
-import { useContext, useState, useEffect } from "react";
-import { UserContext } from "../CheckForUser/CheckForUser";
+import { useState, useEffect } from "react";
 import styles from "./DrawerDivider.module.css";
 
 function DrawerDivider() {
-  const { username } = useContext(UserContext);
   const [logoDisplay, setLogoDisplay] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (username) {
-        setLogoDisplay(true);
-      }
-    }, 1);
-  }, [username]);
+    setLogoDisplay(true);
+  }, []);
+
   return (
     // <div className={styles.drawerDividerCard}>
     <div

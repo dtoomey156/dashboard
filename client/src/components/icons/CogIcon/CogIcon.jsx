@@ -1,18 +1,14 @@
-import { useContext, useState, useEffect } from "react";
-import { UserContext } from "../../CheckForUser/CheckForUser";
+import { useState, useEffect } from "react";
+
 import styles from "../IconCSS/IconCSS.module.css";
 
 function CogIcon({ iconName, expandedDrawer }) {
-  const { username } = useContext(UserContext);
   const [logoDisplay, setLogoDisplay] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (username) {
-        setLogoDisplay(true);
-      }
-    }, 1);
-  }, [username]);
+    setLogoDisplay(true);
+  }, []);
+
   return (
     <div
       className={[styles.card, logoDisplay ? styles.fadeOnIcons : ""].join(" ")}
