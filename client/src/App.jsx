@@ -1,12 +1,12 @@
-import { useContext } from "react";
 import styles from "./App.module.css";
 import Logo from "./components/Logo/Logo.jsx";
 import CheckForUser from "./components/CheckForUser/CheckForUser.jsx";
 import Routes from "./components/Routes/Routes.jsx";
-import { UserContext } from "./components/CheckForUser/CheckForUser.jsx";
+import axios from "axios";
 
 function App() {
-  const { username } = useContext(UserContext);
+  axios.defaults.baseURL = "http://localhost:4040";
+  axios.defaults.withCredentials = true;
   return (
     <CheckForUser>
       <div className={styles.container}>

@@ -1,18 +1,28 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../CheckForUser/CheckForUser";
 
 import styles from "./RegisterOrLogin.module.css";
+
+import axios from "axios";
 
 function RegisterOrLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoginOrRegister, setIsLoginOrRegister] = useState("login");
+  const { setUsername: setLoggedInUsername, setId } = useContext(UserContext);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     console.log(username);
     console.log(password);
-    // const url = isLoginOrRegister === "signup" ? "signup" : "login";
-    // const { data } = await axios.post(url, { username, password });
+    const url = isLoginOrRegister === "signup" ? "signup" : "login";
+    const { data } = await axios.post(url, { username, password });
+    // after the user has logged in, sets user context with the data from the form that posts to the backend
+    setLoggedInUsername(username);
+    setId(data.id);
+    // erases inputs on the form after submit
+    setUsername("");
+    setPassword("");
   }
 
   return (
