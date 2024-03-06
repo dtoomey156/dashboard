@@ -6,14 +6,18 @@ function RegisterOrLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoginOrRegister, setIsLoginOrRegister] = useState("login");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(username);
+    console.log(password);
+    // const url = isLoginOrRegister === "signup" ? "signup" : "login";
+    // const { data } = await axios.post(url, { username, password });
+  }
+
   return (
     <div className={styles.container}>
-      <form
-        className={styles.registerOrLogin}
-        onClick={(e) => {
-          e.preventDefault();
-        }}
-      >
+      <form className={styles.registerOrLogin} onSubmit={handleSubmit}>
         <input
           value={username}
           onChange={(e) => {
@@ -40,7 +44,8 @@ function RegisterOrLogin() {
           <span>...</span>
           <button
             className={styles.toggleFormButton}
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               if (isLoginOrRegister === "login") {
                 setIsLoginOrRegister("signup");
               } else if (isLoginOrRegister === "signup") {
