@@ -1,5 +1,4 @@
-import { useEffect, useState, useContext } from "react";
-import { UserContext } from "../CheckForUser/CheckForUser";
+import { useEffect, useState } from "react";
 import { data } from "../../data/data";
 import styles from "./DrawerCard.module.css";
 import DashboardIcon from "../icons/DashboardIcon/DashboardIcon";
@@ -10,27 +9,7 @@ import MessageQuestionIcon from "../icons/MessageQuestionIcon";
 import ShieldIcon from "../icons/ShieldIcon";
 import parse from "html-react-parser";
 
-// function DrawerCard() {
-//   return data.map((each) => (
-//     <div style={{ width: "5rem", height: "5rem" }}>
-//       {Object.values(parse(each.svg))}
-//     </div>
-//   ));
-// }
-
 function DrawerCard({ expandedDrawer }) {
-  // const userIcons = [];
-  // data.map((index) => {
-  //   userIcons.push(parse(index.svg));
-  // });
-
-  // console.log(userIcons, "usericons");
-  // const poop = userIcons.map((i) => {
-  //   parse(i);
-  // });
-  // console.log(poop, "buuuuurrrrpppp");
-
-  const { username } = useContext(UserContext);
   const [logoDisplay, setLogoDisplay] = useState(false);
 
   const staticUi = [
@@ -81,27 +60,9 @@ function DrawerCard({ expandedDrawer }) {
     userSelectedIcons.push(index);
   });
 
-  console.log(logoDisplay, "logodisplay from Drawer Card");
-
   userSelectedIcons.reverse().forEach((item) => {
     staticUi.splice(3, 0, item);
   });
-
-  console.log(logoDisplay, "from drawercard");
-
-  // return (
-  //   <>
-  //     <DashboardIcon />
-  //     <DrawerDivider />
-  //     <HomeIcon />
-  //     <DrawerDivider />
-  //     <CogIcon />
-  //     <MessageQuestionIcon />
-  //     <ShieldIcon />
-  //   </>
-  // );
-
-  // return array;
 
   return staticUi.map((each) =>
     !each.svg ? (
@@ -134,26 +95,6 @@ function DrawerCard({ expandedDrawer }) {
       </div>
     )
   );
-
-  // return staticUi.map((each) => (
-  //   <div className={styles.card}>
-  //     <div>{each.svg ? parse(each.svg) : each}</div>
-  //     <h1 className={styles.drawerTitle}>{each.name}</h1>
-  //   </div>
-  // ));
-
-  // userSelectedIcons.forEach((item) => {
-  //   staticUi.splice(3, 0, parse(item.svg));
-  // });
-
-  // return staticUi.map((each) => (
-  //   <div className={styles.card}>
-  //     <div>{each}</div>
-  //     <h1 className={styles.drawerTitle}></h1>
-  //   </div>
-  // ));
-
-  // return drawerDivider;
 }
 
 export default DrawerCard;

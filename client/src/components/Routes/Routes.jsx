@@ -6,7 +6,6 @@ import RegisterOrLogin from "../RegisterOrLogin/RegisterOrLogin";
 function Routes() {
   const { username } = useContext(UserContext);
   if (username) {
-    console.log(username);
     return <Drawer />;
   } else {
     return <RegisterOrLogin />;

@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const UserContext = createContext({});
 
 function CheckForUser({ children }) {
-  const [username, setUsername] = useState("bill");
+  const [username, setUsername] = useState("");
   // useEffect(() => {
   //   axios.get("/profile").then((response) => {
   //     setUsername(response.data.username);
