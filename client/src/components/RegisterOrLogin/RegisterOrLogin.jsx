@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../CheckForUser/CheckForUser";
 
 import styles from "./RegisterOrLogin.module.css";
@@ -10,6 +10,13 @@ function RegisterOrLogin() {
   const [password, setPassword] = useState("");
   const [isLoginOrRegister, setIsLoginOrRegister] = useState("login");
   const { setUsername: setLoggedInUsername, setId } = useContext(UserContext);
+  const [fadeOn, setFadeOn] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFadeOn(true);
+    }, 60);
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -27,7 +34,12 @@ function RegisterOrLogin() {
 
   return (
     <div className={styles.container}>
-      <form className={styles.registerOrLogin} onSubmit={handleSubmit}>
+      <form
+        className={[styles.registerOrLogin, fadeOn ? styles.fade : ""].join(
+          " "
+        )}
+        onSubmit={handleSubmit}
+      >
         <input
           value={username}
           onChange={(e) => {

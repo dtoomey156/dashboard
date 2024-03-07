@@ -5,21 +5,22 @@ import styles from "./Logo.module.css";
 function Background() {
   const { username } = useContext(UserContext);
   const [logoDisplay, setLogoDisplay] = useState(false);
+  const [fadeOn, setFadeOn] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
-      if (username) {
-        setLogoDisplay(true);
-      }
-    }, 1);
-  }, [username]);
+      setFadeOn(true);
+    }, 60);
+  }, []);
+
+  // useEffect(() => {
+  //   username ? setFadeOn(true) : setFadeOn(false);
+  // }, [username]);
 
   return (
     <div className={styles.logoContainer}>
       <svg
-        className={[styles.logo, logoDisplay ? styles.fadeOnLogo : ""].join(
-          " "
-        )}
+        className={[styles.logo, fadeOn ? styles.fadeOnLogo : ""].join(" ")}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="#0d6efd"

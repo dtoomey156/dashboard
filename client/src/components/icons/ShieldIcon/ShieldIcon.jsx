@@ -5,7 +5,9 @@ function ShieldIcon({ iconName, expandedDrawer }) {
   const [logoDisplay, setLogoDisplay] = useState(false);
 
   useEffect(() => {
-    setLogoDisplay(true);
+    setTimeout(() => {
+      setLogoDisplay(true);
+    }, 60);
   }, []);
 
   return (

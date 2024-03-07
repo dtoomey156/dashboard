@@ -10,7 +10,7 @@ function App() {
   return (
     <CheckForUser>
       <div className={styles.container}>
-        <Logo />
+        {/* <Logo /> */}
         <Routes />
       </div>
     </CheckForUser>

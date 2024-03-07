@@ -52,7 +52,9 @@ function DrawerCard({ expandedDrawer }) {
   // }, []);
 
   useEffect(() => {
-    setLogoDisplay(true);
+    setTimeout(() => {
+      setLogoDisplay(true);
+    }, 60);
   }, []);
 
   const userSelectedIcons = [];

@@ -3,13 +3,11 @@
   justify-content: flex-start;
   align-items: center;
   pointer-events: none;
-  visibility: hidden;
   opacity: 0;
   transition: opacity 1s ease-in;
 }
 
 .fadeOnIcons {
-  visibility: visible;
   opacity: 1;
 }
 
