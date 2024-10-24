@@ -20,7 +20,6 @@ function Drawer() {
       // setWs(null);
       // setId(null);
       setUsername(null);
-      console.log("logout function");
     });
   }
 

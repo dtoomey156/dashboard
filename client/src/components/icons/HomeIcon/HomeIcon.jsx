@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "../IconCSS/IconCSS.module.css";
 
-function HomeIcon({ iconName, expandedDrawer }) {
+function HomeIcon({ iconName, expandedDrawer, passedFunction }) {
   const [logoDisplay, setLogoDisplay] = useState(false);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ function HomeIcon({ iconName, expandedDrawer }) {
           expandedDrawer ? styles.cardClickable : "",
           expandedDrawer ? styles.mousePointer : "",
         ].join(" ")}
+        onClick={passedFunction}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path

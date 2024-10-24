@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "../IconCSS/IconCSS.module.css";
 
-function DashboardIcon({ iconName, expandedDrawer }) {
+function DashboardIcon({ iconName, expandedDrawer, passedFunction }) {
   const [logoDisplay, setLogoDisplay] = useState(false);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ function DashboardIcon({ iconName, expandedDrawer }) {
           expandedDrawer ? styles.cardClickable : "",
           expandedDrawer ? styles.mousePointer : "",
         ].join(" ")}
+        // onClick={passedFunction}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path

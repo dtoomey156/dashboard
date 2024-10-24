@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { data } from "../../data/data";
 import styles from "./DrawerCard.module.css";
 import DashboardIcon from "../icons/DashboardIcon/DashboardIcon";
@@ -7,19 +7,68 @@ import HomeIcon from "../icons/HomeIcon/HomeIcon";
 import CogIcon from "../icons/CogIcon/CogIcon";
 import MessageQuestionIcon from "../icons/MessageQuestionIcon";
 import ShieldIcon from "../icons/ShieldIcon";
+
+import Chat from "../Chat/Chat";
 import parse from "html-react-parser";
 
 function DrawerCard({ expandedDrawer }) {
   const [logoDisplay, setLogoDisplay] = useState(false);
+  const [appArray, setAppArray] = useState([]);
+  const [uniqueAppArray, setUniqueAppArray] = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLogoDisplay(true);
+    }, 60);
+  }, []);
+
+  // function openApp(e) {
+  //   const app = e.target.firstChild.firstChild.innerHTML;
+  //   switch (app) {
+  //     case "Chat":
+  //       setAppArray([...appArray, <DashboardIcon />]);
+  //       break;
+  //     case "file-upload-outline":
+  //       // const fileUpload = <HomeIcon />;
+  //       setAppArray([...appArray, <HomeIcon />]);
+  //       break;
+  //   }
+  // }
+
+  // function setUniqueArray() {
+  //   if (appArray.length > 1) {
+  //     const length = appArray.length;
+  //     appArray.forEach((each, index) => {
+  //       const counter = index + 1;
+  //       if (counter != length) {
+  //         const iteration = each.type.name;
+  //         const checkAgainst = appArray[index + 1].type.name;
+  //         if (iteration === checkAgainst) {
+  //           const pop = [...appArray].pop();
+  //           // setUniqueAppArray([...uniqueAppArray, pop]);
+  //           console.log(pop, "pop");
+  //         }
+  //       }
+  //     });
+  //   }
+  // }
+
+  // setUniqueArray();
 
   const staticUi = [
     <DashboardIcon
       key={"dashboard"}
       iconName="Dashboard"
       expandedDrawer={expandedDrawer}
+      // passedFunction={openApp}
     />,
     <DrawerDivider key={"divider1"} />,
-    <HomeIcon key={"home"} iconName="Home" expandedDrawer={expandedDrawer} />,
+    <HomeIcon
+      key={"home"}
+      iconName="Home"
+      expandedDrawer={expandedDrawer}
+      // passedFunction={openApp}
+    />,
     <DrawerDivider key={"divider2"} />,
     <CogIcon
       key={"settings"}
@@ -38,35 +87,36 @@ function DrawerCard({ expandedDrawer }) {
     />,
   ];
 
-  // const array = [
-  //   <DashboardIcon key={1} iconName="Dashboard" />,
-  //   <ShieldIcon key={2} iconName="Privacy" />,
-  // ];
+  // const userSelectedIcons = [];
+  // data.map((index) => {
+  //   userSelectedIcons.push(index);
+  // });
+  let userAndStaticRenderedUi = [];
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (username) {
-  //       setLogoDisplay(true);
-  //     }
-  //   }, 1);
-  // }, []);
+  function populateDrawer() {
+    const userSelectedIcons = [];
+    data.map((index) => {
+      userSelectedIcons.push(index);
+    });
+    userSelectedIcons.reverse().forEach((item) => {
+      staticUi.splice(3, 0, item);
+    });
+    userAndStaticRenderedUi = [...staticUi];
+  }
+  populateDrawer();
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLogoDisplay(true);
-    }, 60);
-  }, []);
+  // const userSelectedIcons = [];
+  // data.map((index) => {
+  //   userSelectedIcons.push(index);
+  // });
 
-  const userSelectedIcons = [];
-  data.map((index) => {
-    userSelectedIcons.push(index);
-  });
+  // const userApps = [...userSelectedIcons];
 
-  userSelectedIcons.reverse().forEach((item) => {
-    staticUi.splice(3, 0, item);
-  });
+  // userSelectedIcons.reverse().forEach((item) => {
+  //   staticUi.splice(3, 0, item);
+  // });
 
-  return staticUi.map((each) =>
+  return userAndStaticRenderedUi.map((each) =>
     !each.svg ? (
       each
     ) : (
@@ -82,6 +132,7 @@ function DrawerCard({ expandedDrawer }) {
             expandedDrawer ? styles.cardClickable : "",
             expandedDrawer ? styles.mousePointer : "",
           ].join(" ")}
+          // onClick={openApp}
         >
           {parse(each.svg)}
         </button>
